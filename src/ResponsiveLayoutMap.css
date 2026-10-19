@@ -1,0 +1,220 @@
+/* ResponsiveLayoutMap — tokens are scoped to the component so it drops into
+   any app. Override any --rlm-* variable on .rlm (or an ancestor) to theme it. */
+
+.rlm {
+  --rlm-p1: oklch(0.66 0.24 355);
+  --rlm-p2: oklch(0.75 0.17 355);
+  --rlm-p3: oklch(0.83 0.11 355);
+  --rlm-p4: oklch(0.93 0.045 355);
+  --rlm-col-alt: oklch(0.89 0.07 355);
+  --rlm-gutter: oklch(0.9 0.06 355);
+  --rlm-pop-text: oklch(0.5 0.2 355);
+  --rlm-ink: #202027;
+  --rlm-screen: #fff;
+  --rlm-shell: var(--rlm-ink);
+  --rlm-foreground: oklch(0% 0 0);
+  --rlm-muted-foreground: oklch(0.556 0 0);
+  --rlm-seg-bg: oklch(0.955 0 0);
+  --rlm-seg-on: #fff;
+  --rlm-border: oklch(0.922 0 0);
+  --rlm-background: oklch(1 0 0);
+  --rlm-ring: oklch(0.708 0 0);
+  --rlm-radius: 12px;
+  --rlm-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  font-family: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  color: var(--rlm-foreground);
+}
+
+.dark .rlm,
+.rlm.dark {
+  --rlm-foreground: oklch(0.985 0 0);
+  --rlm-muted-foreground: oklch(0.708 0 0);
+  --rlm-seg-bg: oklch(0.205 0 0);
+  --rlm-seg-on: oklch(0.371 0 0);
+  --rlm-border: oklch(1 0 0 / 10%);
+  --rlm-background: oklch(0.145 0 0);
+  --rlm-ring: oklch(0.556 0 0);
+  --rlm-shell: oklch(0.371 0 0);
+}
+
+/* Segmented control */
+.rlm-seg {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px;
+  max-width: 100%;
+  background: var(--rlm-seg-bg);
+  border-radius: var(--rlm-radius);
+}
+.rlm-seg button {
+  border: 0;
+  background: transparent;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  font-family: inherit;
+  color: var(--rlm-muted-foreground);
+  padding: 8px 20px;
+  min-width: 112px;
+  border-radius: calc(var(--rlm-radius) - 4px);
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s, box-shadow 0.15s;
+}
+.rlm-seg button:hover { color: var(--rlm-foreground); }
+.rlm-seg button[data-on="true"] {
+  background: var(--rlm-seg-on);
+  color: var(--rlm-foreground);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+.rlm-seg button:focus-visible,
+.rlm-play:focus-visible {
+  outline: 2px solid var(--rlm-ring);
+  outline-offset: 2px;
+}
+
+/* Frames */
+.rlm-row-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+.rlm-row {
+  display: flex;
+  gap: 56px;
+  align-items: flex-start;
+  width: max-content;
+  margin: 0 auto;
+  padding-bottom: 8px;
+}
+.rlm-row[data-stacked] {
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+.rlm-dev {
+  flex-shrink: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.rlm-shell {
+  position: relative;
+  overflow: hidden;
+  border: 4px solid var(--rlm-shell);
+  border-radius: 18px;
+  background: var(--rlm-screen);
+}
+.rlm-shell::before {
+  content: "";
+  display: block;
+  height: 22px;
+  background: var(--rlm-shell);
+}
+.rlm-vp { position: relative; overflow: hidden; }
+.rlm-scr {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+  background: var(--rlm-screen);
+}
+.rlm-col {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--rlm-p4);
+}
+.rlm-col[data-alt] { background: var(--rlm-col-alt); }
+.rlm-gut {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(135deg, var(--rlm-gutter) 0 3px, transparent 3px 14px);
+}
+
+/* Blocks */
+.rlm-blk {
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+  padding: 14px 16px;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 34px;
+  font-family: inherit;
+  color: #fff;
+  outline: 6px solid transparent;
+  outline-offset: -6px;
+  transition: opacity 0.35s var(--rlm-ease), outline-color 0.35s var(--rlm-ease);
+}
+.rlm-blk.rlm-dk { color: var(--rlm-ink); }
+.rlm-blk.rlm-nav { font-size: 26px; align-items: center; padding: 0 24px; }
+.rlm-blk.rlm-pop {
+  border: 5px dashed var(--rlm-p1);
+  background: rgb(255 255 255 / 0.88);
+  color: var(--rlm-pop-text);
+}
+.rlm-row[data-focus] .rlm-blk { opacity: 0.28; }
+.rlm-row[data-focus] .rlm-blk.rlm-f { opacity: 1; outline-color: var(--rlm-ink); }
+
+.rlm-cap {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 20px;
+}
+.rlm-cap b { font-weight: 500; }
+.rlm-cap span {
+  font: 400 11px/16px "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--rlm-muted-foreground);
+}
+
+/* Play */
+.rlm-play {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 12px 0 10px;
+  border: 1px solid var(--rlm-border);
+  border-radius: 8px;
+  background: var(--rlm-background);
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 20px;
+  font-family: inherit;
+  color: var(--rlm-muted-foreground);
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.15s, color 0.15s;
+}
+.rlm-play:hover,
+.rlm-play[data-on="true"] { opacity: 1; color: var(--rlm-foreground); }
+.rlm-play svg { width: 14px; height: 14px; }
+.rlm-play b { font-weight: 500; color: var(--rlm-foreground); }
+.rlm-play small {
+  font: 400 11px/16px "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--rlm-muted-foreground);
+}
+
+@media (max-width: 640px) {
+  .rlm { gap: 28px; }
+  .rlm-seg button { min-width: 0; padding: 6px 12px; font-size: 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rlm *,
+  .rlm *::before { transition: none !important; }
+}
