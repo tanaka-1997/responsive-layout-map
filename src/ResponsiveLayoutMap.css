@@ -29,16 +29,6 @@
   color: var(--rlm-foreground);
 }
 
-.dark .rlm,
-.rlm.dark {
-  --rlm-foreground: oklch(0.985 0 0);
-  --rlm-muted-foreground: oklch(0.708 0 0);
-  --rlm-seg-bg: oklch(0.205 0 0);
-  --rlm-seg-on: oklch(0.371 0 0);
-  --rlm-ring: oklch(0.556 0 0);
-  --rlm-shell: oklch(0.371 0 0);
-}
-
 /* Segmented control */
 .rlm-seg {
   display: flex;

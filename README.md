@@ -6,10 +6,7 @@ It ships with the layout of a docs-style home page, and you can feed it your own
 
 **[Live demo →](https://tanaka-1997.github.io/responsive-layout-map/)**
 
-<p>
-  <img src="docs/preview-light.png" alt="Layout map, light theme" width="420" />
-  <img src="docs/preview-dark.png" alt="Layout map, dark theme" width="420" />
-</p>
+<img src="docs/preview-light.png" alt="Layout map with the three breakpoint frames" width="840" />
 
 ## What it shows
 
@@ -102,8 +99,6 @@ All colours are CSS custom properties scoped to `.rlm`, so you can override them
   --rlm-ink: #1b1b22;             /* frame and nav colour */
 }
 ```
-
-Dark mode switches on when `.dark` is on the component or any ancestor. The frames stay light because they picture a light page.
 
 ## Accessibility
 
