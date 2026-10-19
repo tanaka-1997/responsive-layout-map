@@ -1,6 +1,6 @@
 # Responsive Layout Map
 
-A React component that draws a page's layout at several breakpoints side by side, all to the same scale. Pick a block (Top nav, Floating menu, Titles…) to highlight it in every frame and see how it moves between Full, Medium and Mobile. Press **Play** to step through each block in turn.
+A React component that draws a page's layout at several breakpoints side by side, all to the same scale. Pick a block (Top nav, Floating menu, Titles…) to highlight it in every frame and see how it moves between Full, Medium and Mobile.
 
 It ships with the layout of a docs-style home page, and you can feed it your own.
 
@@ -44,16 +44,14 @@ Your bundler needs to handle JSX and CSS imports (Vite, Next.js and similar do t
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
 | `breakpoints` | `Breakpoint[]` | Home page (Full, Medium, Mobile) | The frames to draw. See [Your own layout](#your-own-layout) |
-| `blockTypes` | `Record<string, BlockType>` | Home page blocks | Names and colours of each kind of block; also the order Play steps through |
+| `blockTypes` | `Record<string, BlockType>` | Home page blocks | Names and colours of each kind of block; also the order of the buttons |
 | `scale` | `number` | `0.4` | Largest scale to draw the frames at |
 | `fit` | `boolean` | `true` | Shrink to fit the container. On narrow screens the frames stack vertically |
 | `minRowScale` | `number` | `0.2` | Below this scale, frames stack instead of sitting side by side |
 | `focus` | `string \| null` | — | Controlled highlighted block type. Leave unset to let the component manage it |
 | `defaultFocus` | `string \| null` | `null` | Block type highlighted on first render |
 | `onFocusChange` | `(type: string \| null) => void` | — | Called when the highlighted block changes |
-| `playInterval` | `number` | `1800` | Milliseconds each block stays highlighted during Play |
 | `showControls` | `boolean` | `true` | Show the row of block buttons |
-| `showPlay` | `boolean` | `true` | Show the Play button |
 | `className` | `string` | — | Extra class on the root element |
 
 ## Your own layout

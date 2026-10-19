@@ -16,8 +16,6 @@
   --rlm-muted-foreground: oklch(0.556 0 0);
   --rlm-seg-bg: oklch(0.955 0 0);
   --rlm-seg-on: #fff;
-  --rlm-border: oklch(0.922 0 0);
-  --rlm-background: oklch(1 0 0);
   --rlm-ring: oklch(0.708 0 0);
   --rlm-radius: 12px;
   --rlm-ease: cubic-bezier(0.4, 0, 0.2, 1);
@@ -37,8 +35,6 @@
   --rlm-muted-foreground: oklch(0.708 0 0);
   --rlm-seg-bg: oklch(0.205 0 0);
   --rlm-seg-on: oklch(0.371 0 0);
-  --rlm-border: oklch(1 0 0 / 10%);
-  --rlm-background: oklch(0.145 0 0);
   --rlm-ring: oklch(0.556 0 0);
   --rlm-shell: oklch(0.371 0 0);
 }
@@ -74,8 +70,7 @@
   color: var(--rlm-foreground);
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
-.rlm-seg button:focus-visible,
-.rlm-play:focus-visible {
+.rlm-seg button:focus-visible {
   outline: 2px solid var(--rlm-ring);
   outline-offset: 2px;
 }
@@ -176,35 +171,6 @@
 }
 .rlm-cap b { font-weight: 500; }
 .rlm-cap span {
-  font: 400 11px/16px "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  color: var(--rlm-muted-foreground);
-}
-
-/* Play */
-.rlm-play {
-  align-self: flex-end;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  height: 32px;
-  padding: 0 12px 0 10px;
-  border: 1px solid var(--rlm-border);
-  border-radius: 8px;
-  background: var(--rlm-background);
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 20px;
-  font-family: inherit;
-  color: var(--rlm-muted-foreground);
-  cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 0.15s, color 0.15s;
-}
-.rlm-play:hover,
-.rlm-play[data-on="true"] { opacity: 1; color: var(--rlm-foreground); }
-.rlm-play svg { width: 14px; height: 14px; }
-.rlm-play b { font-weight: 500; color: var(--rlm-foreground); }
-.rlm-play small {
   font: 400 11px/16px "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   color: var(--rlm-muted-foreground);
 }
